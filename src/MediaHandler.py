@@ -14,11 +14,28 @@ class MediaHandler:
         if os.path.exists(output_file):
             os.remove(output_file)
 
-        output = (
-            ffmpeg
-            .input(self.input_file.as_posix())
+        vid_stream = ffmpeg.input(self.input_file).video
+        audio_stream = ffmpeg.input(self.input_file).audio
+
+        trimmed_video_stream = vid_stream \
             .trim(start=start_time.get_formatted_timestamp(), end=end_time.get_formatted_timestamp())
-            .output(output_file.as_posix())
+
+        trimmed_audio_stream = audio_stream.filter('atrim', start=start_time.get_formatted_timestamp(),
+                                                   end=end_time.get_formatted_timestamp())
+
+        output_video_and_audio = ffmpeg.output(trimmed_video_stream, trimmed_audio_stream,
+                                               output_file.as_posix())
+
+        output_video_and_audio.overwrite_output().run()
+
+    def save_prepared_for_transcription(self, output_file: PurePosixPath):
+        audio_stream = (
+            ffmpeg
+                .input(self.input_file.as_posix())
+                .audio
+                .filter('aformat', channel_layouts='mono', sample_rates='16000')
+                .output(output_file.as_posix(), acodec='aac')
         )
 
-        output.run()
+        audio_stream.run()
+
