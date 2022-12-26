@@ -1,5 +1,10 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
+
+# Additional directories
+
+/tests/test_files/tests_temp/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
