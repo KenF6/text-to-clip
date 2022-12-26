@@ -1,10 +1,12 @@
 import os
+from datetime import time
 from pathlib import PurePosixPath
 
 import ffmpeg
 import pytest
 
 from src.MediaHandler import MediaHandler
+from src.models.FfmpegTimestamp import FfmpegTimestamp
 
 
 @pytest.mark.parametrize(
@@ -12,12 +14,21 @@ from src.MediaHandler import MediaHandler
     [
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 360p.mp4",
          "./test_files/tests_temp/cut-Money Boy - Monte Carlo 360p.mp4",
-         "00:00:01", "00:00:04", 4.0),
+         FfmpegTimestamp(time(hour=0, minute=0, second=0)),
+         FfmpegTimestamp(time(hour=0, minute=0, second=4)),
+         4.0),
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 480p.mp4",
-         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.mp4", "00:00:02", "00:00:06", 5.08)
+         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.mp4",
+         FfmpegTimestamp(time(hour=0, minute=0, second=2)),
+         FfmpegTimestamp(time(hour=0, minute=0, second=6))
+         , 5.08)
     ]
 )
-def test_cut_and_save_file_is_created(input_file, output_file, start_time, end_time, expected_duration):
+def test_cut_and_save_file_is_created(input_file: str,
+                                      output_file: str,
+                                      start_time: FfmpegTimestamp,
+                                      end_time: FfmpegTimestamp,
+                                      expected_duration: float):
     # Arrange
     path_to_current_file = os.path.realpath(__file__)
     current_directory = os.path.dirname(path_to_current_file)
@@ -46,12 +57,21 @@ def test_cut_and_save_file_is_created(input_file, output_file, start_time, end_t
     [
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 360p.mp4",
          "./test_files/tests_temp/cut-Money Boy - Monte Carlo 360p.mp4",
-         "00:00:01", "00:00:04", 4.0),
+         FfmpegTimestamp(time(hour=0, minute=0, second=0)),
+         FfmpegTimestamp(time(hour=0, minute=0, second=4)),
+         4.0),
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 480p.mp4",
-         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.mp4", "00:00:02", "00:00:06", 5.08)
+         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.mp4",
+         FfmpegTimestamp(time(hour=0, minute=0, second=2)),
+         FfmpegTimestamp(time(hour=0, minute=0, second=6))
+         , 5.08)
     ]
 )
-def test_cut_and_save_duration_is_correct(input_file, output_file, start_time, end_time, expected_duration):
+def test_cut_and_save_duration_is_correct(input_file: str,
+                                          output_file: str,
+                                          start_time: FfmpegTimestamp,
+                                          end_time: FfmpegTimestamp,
+                                          expected_duration: float):
     # Arrange
     path_to_current_file = os.path.realpath(__file__)
     current_directory = os.path.dirname(path_to_current_file)
