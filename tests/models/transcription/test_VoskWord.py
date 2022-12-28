@@ -1,6 +1,6 @@
 import pytest
 
-from src.models.transcription.VoskWord import VoskWord
+from src.models.transcription.RecognizedWord import RecognizedWord
 
 
 @pytest.mark.parametrize(
@@ -11,18 +11,18 @@ from src.models.transcription.VoskWord import VoskWord
             "end": 1.6,
             "word": "car",
             "conf": 0.3
-         }, VoskWord(conf=0.3, start=0.5, end=1.6, word="car")),
+         }, RecognizedWord(conf=0.3, start=0.5, end=1.6, text="car")),
         ({
             "start": 0.0,
             "end": 1.5,
             "word": "train",
             "conf": 0.6
-         }, VoskWord(conf=0.6, start=0.0, end=1.5, word="train"))
+         }, RecognizedWord(conf=0.6, start=0.0, end=1.5, text="train"))
     ]
 )
-def test_from_dict(test_input: dict, expected_output: VoskWord):
+def test_from_dict(test_input: dict, expected_output: RecognizedWord):
     # Act
-    output = VoskWord.from_dict(test_input)
+    output = RecognizedWord.from_dict(test_input)
 
     # Assert
     assert output == expected_output

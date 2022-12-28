@@ -6,7 +6,7 @@ from typing import Any
 from vosk import Model, KaldiRecognizer
 
 from src.MediaHandler import MediaHandler
-from src.models.transcription.VoskResult import VoskResult
+from src.models.transcription.Transcript import Transcript
 
 
 class Transcriber:
@@ -14,7 +14,7 @@ class Transcriber:
         self.filepath = input_filepath
         self.media_handler = MediaHandler(self.filepath)
 
-    def create_transcript(self) -> VoskResult:
+    def create_transcript(self) -> Transcript:
         if not self.is_format_supported():
             print("Audio file must be WAV format mono PCM.")
             sys.exit(1)
@@ -24,7 +24,7 @@ class Transcriber:
 
         self.media_handler.close_wav_file()
 
-        return VoskResult.from_dict(json.loads(recognition_result))
+        return Transcript.from_dict(json.loads(recognition_result))
 
     def is_format_supported(self) -> bool:
         wave_file = self.media_handler.read_wav_file()
