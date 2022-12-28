@@ -1,14 +1,16 @@
 from difflib import SequenceMatcher
 from typing import List, Tuple
 
+from src.models.transcription.Transcript import Transcript
+
 
 class SearchTermMatcher:
     def __init__(self):
         pass
 
-    def find_sentence(self, sentence: str, text: str) -> List[Tuple[int, int, int]]:
+    def find_sentence(self, sentence: str, transcript: Transcript) -> List[Tuple[int, int, int]]:
         indices = []
-        words = text.split()
+        words = transcript.full_text.split()
         sentence_words = sentence.split()
 
         for sw_index, search_word in enumerate(sentence_words):
