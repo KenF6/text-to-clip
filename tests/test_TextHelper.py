@@ -83,7 +83,7 @@ def test_turn_text_into_plain_word_list(test_input: str, expected_output: list[s
 @pytest.mark.parametrize(
     "test_input, expected_output",
     [
-        (["This", "is", "a", "test", "transcript!"], ["this", "is", "a", "test", "transcript"])
+        (["This", "is", "a", "test", "transcript!"], ["This", "is", "a", "test", "transcript"])
     ]
 )
 def test_remove_all_punctuation(test_input: list[str], expected_output: list[str]):
