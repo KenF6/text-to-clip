@@ -10,20 +10,24 @@ class SearchTermMatcher:
 
     def find_sentence(self, sentence: str, transcript: Transcript) -> List[Tuple[int, int, int]]:
         indices = []
-        words = transcript.full_text.split()
-        sentence_words = sentence.split()
+        words_in_transcript = transcript.full_text.split()
+        sentence = sentence.split()
 
-        for sw_index, search_word in enumerate(sentence_words):
-            for i, word in enumerate(words):
-                if word == search_word:
-                    remaining_length = len(words) - i
+        for sentence_word_index, word_from_sentence in enumerate(sentence):
+            for transcript_word_index, word_from_transcript in enumerate(words_in_transcript):
+                if word_from_transcript == word_from_sentence:
+                    number_of_words_remaining_in_transcript = len(words_in_transcript) - transcript_word_index
 
-                    if remaining_length >= len(sentence_words):
-                        words_ = words[i - sw_index:i - sw_index + len(sentence_words)]
-                        s = SequenceMatcher(None, words_, sentence_words)
+                    if number_of_words_remaining_in_transcript >= len(sentence):
+                        sentence_in_transcript = words_in_transcript[
+                                 transcript_word_index - sentence_word_index:transcript_word_index - sentence_word_index + len(
+                                     sentence)]
+                        s = SequenceMatcher(None, sentence_in_transcript, sentence)
 
                         if s.ratio() >= 0.4:
-                            indices.append((i - sw_index, i - sw_index + len(sentence_words), s.ratio()))
+                            indices.append((transcript_word_index - sentence_word_index,
+                                            transcript_word_index - sentence_word_index + len(sentence),
+                                            s.ratio()))
 
         return self.deduplicate_tuples(indices)
 
