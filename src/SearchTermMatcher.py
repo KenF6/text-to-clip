@@ -1,17 +1,18 @@
 from difflib import SequenceMatcher
 from typing import List, Tuple, Set
 
+from src.TextHelper import TextHelper
 from src.models.matching.PotentialMatch import PotentialMatch
 from src.models.transcription.Transcript import Transcript
 
 
 class SearchTermMatcher:
     def __init__(self):
-        pass
+        self.text_helper = TextHelper()
 
     def find_potential_matches(self, sentence: str, transcript: Transcript) -> List[PotentialMatch]:
         potential_matches: List[PotentialMatch] = []
-        sentence = sentence.split()
+        sentence = self.text_helper.turn_text_into_plain_word_list(sentence)
 
         for sentence_word_index, word_from_sentence in enumerate(sentence):
             for transcript_word_index, word_from_transcript in enumerate(transcript.words):
