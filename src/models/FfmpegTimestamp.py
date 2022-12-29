@@ -1,9 +1,9 @@
-from datetime import time
+from datetime import time, timedelta
 
 
 class FfmpegTimestamp:
-    def __init__(self, duration: time) -> None:
+    def __init__(self, duration: timedelta) -> None:
         self.timestamp: time = duration
 
     def get_formatted_timestamp(self):
-        return self.timestamp.isoformat(timespec='seconds')
+        return str(self.timestamp)
