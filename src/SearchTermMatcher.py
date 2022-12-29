@@ -1,5 +1,5 @@
 from difflib import SequenceMatcher
-from typing import List, Tuple, Set
+from typing import List
 
 from src.TextHelper import TextHelper
 from src.models.matching.PotentialMatch import PotentialMatch
@@ -21,7 +21,8 @@ class SearchTermMatcher:
 
                     if number_of_words_remaining_in_transcript >= len(sentence):
                         trying_to_match = transcript.words[
-                                          transcript_word_index - sentence_word_index:transcript_word_index - sentence_word_index + len(
+                                          transcript_word_index - sentence_word_index:
+                                          transcript_word_index - sentence_word_index + len(
                                               sentence)]
 
                         trying_to_match_text = [word.text for word in trying_to_match]
