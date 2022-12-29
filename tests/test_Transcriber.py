@@ -56,3 +56,23 @@ def test_create_transcript(filepath: str, expected_output: Transcript):
 
     # Assert
     assert output == expected_output
+
+
+@pytest.mark.parametrize(
+    "input_filepath, expected_filepath",
+    [
+        (PurePosixPath("/c/some/folder/somefile.somextension"),
+         PurePosixPath("/c/some/folder/somefile_prepared.wav")),
+        (PurePosixPath("C:\\some\\folder\\somefile.somextension"),
+         PurePosixPath("C:\\some\\folder\\somefile_prepared.wav"))
+    ]
+)
+def test_create_prepared_filepath(input_filepath: PurePosixPath, expected_filepath: PurePosixPath):
+    # Arrange
+    transcriber = Transcriber(input_filepath)
+
+    # Act
+    prepared_filepath = transcriber._create_prepared_filepath()
+
+    # Assert
+    assert prepared_filepath == expected_filepath
