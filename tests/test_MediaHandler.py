@@ -19,9 +19,9 @@ from src.models.media_info.VideoStream import VideoStream
     "input_file, expected_output_file",
     [
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 360p.mp4",
-         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 360p.aac"),
+         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 360p.wav"),
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 480p.mp4",
-         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.aac")
+         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.wav")
     ]
 )
 def test_save_prepared_for_transcription(input_file: str,
@@ -47,16 +47,16 @@ def test_save_prepared_for_transcription(input_file: str,
     audio_stream = next(s for s in probe['streams'] if s['codec_type'] == 'audio')
     assert audio_stream['sample_rate'] == '16000'
     assert audio_stream['channel_layout'] == 'mono'
-    assert audio_stream['codec_name'] == 'aac'
+    assert audio_stream['codec_name'] == 'wav'
 
 
 @pytest.mark.parametrize(
     "input_file, expected_output_file",
     [
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 360p.mp4",
-         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 360p.aac"),
+         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 360p.wav"),
         ("./test_files/mb_monte_carlo/tests_prepared/cut-Money Boy - Monte Carlo 480p.mp4",
-         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.aac")
+         "./test_files/tests_temp/cut-Money Boy - Monte Carlo 480p.wav")
     ]
 )
 def test_save_prepared_for_transcription(input_file: str,

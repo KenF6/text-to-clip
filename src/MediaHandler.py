@@ -55,7 +55,7 @@ class MediaHandler:
                 .input(self.input_file.as_posix())
                 .audio
                 .filter('aformat', channel_layouts='mono', sample_rates='16000')
-                .output(output_file.as_posix(), acodec='aac')
+                .output(output_file.as_posix(), acodec='pcm_s16le')
         )
 
         audio_stream.run()
