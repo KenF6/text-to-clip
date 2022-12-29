@@ -42,8 +42,11 @@ class AudioStream:
         _r_frame_rate = str(obj.get("r_frame_rate"))
         _avg_frame_rate = str(obj.get("avg_frame_rate"))
         _time_base = str(obj.get("time_base"))
-        _start_pts = int(obj.get("start_pts"))
-        _start_time = str(obj.get("start_time"))
+        _start_pts = 0
+        _start_time = '0'
+        # _start_pts = int(obj.get("start_pts"))
+        # _start_time = str(obj.get("start_time"))
         _disposition = Disposition.from_dict(obj.get("disposition"))
-        _tags = Tags.from_dict(obj.get("tags"))
+        _tags = None
+        # _tags = Tags.from_dict(obj.get("tags"))
         return AudioStream(_index, _codec_name, _codec_long_name, _codec_type, _codec_tag_string, _codec_tag, _sample_fmt, _sample_rate, _channels, _channel_layout, _bits_per_sample, _r_frame_rate, _avg_frame_rate, _time_base, _start_pts, _start_time, _disposition, _tags)

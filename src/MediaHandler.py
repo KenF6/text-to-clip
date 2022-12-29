@@ -6,6 +6,7 @@ from typing import Union
 import ffmpeg
 
 from src.models.FfmpegTimestamp import FfmpegTimestamp
+from src.models.media_info.MediaInfo import MediaInfo
 
 
 class MediaHandler:
@@ -58,6 +59,10 @@ class MediaHandler:
         )
 
         audio_stream.run()
+
+    def get_media_info(self) -> MediaInfo:
+        info = ffmpeg.probe(self.input_file.as_posix())
+        return MediaInfo.from_dict(info)
 
     def read_wav_file(self) -> Union[wave.Wave_write, wave.Wave_read]:
         if self.wav_handle is None:
