@@ -17,17 +17,34 @@ class MediaHandler:
         if os.path.exists(output_file):
             os.remove(output_file)
 
-        vid_stream = ffmpeg.input(self.input_file).video
-        audio_stream = ffmpeg.input(self.input_file).audio
+        info = ffmpeg.probe(self.input_file.as_posix())
+        streams = info['streams']
 
-        trimmed_video_stream = vid_stream \
-            .trim(start=start_time.get_formatted_timestamp(), end=end_time.get_formatted_timestamp())
+        codec_types: list[str] = []
+        for stream in streams:
+            if stream['codec_type'] not in codec_types:
+                codec_types.append(stream['codec_type'])
 
-        trimmed_audio_stream = audio_stream.filter('atrim', start=start_time.get_formatted_timestamp(),
-                                                   end=end_time.get_formatted_timestamp())
+        output_streams = []
 
-        output_video_and_audio = ffmpeg.output(trimmed_video_stream, trimmed_audio_stream,
-                                               output_file.as_posix())
+        input_file = ffmpeg.input(self.input_file.as_posix())
+
+        has_audio = 'audio' in codec_types
+        has_video = 'video' in codec_types
+
+        if has_audio:
+            audio_stream = input_file.audio
+            trimmed_audio_stream = audio_stream.filter('atrim', start=start_time.get_formatted_timestamp(),
+                                                       end=end_time.get_formatted_timestamp())
+            output_streams.append(trimmed_audio_stream)
+
+        if has_video:
+            vid_stream = input_file.video
+            trimmed_video_stream = vid_stream \
+                .trim(start=start_time.get_formatted_timestamp(), end=end_time.get_formatted_timestamp())
+            output_streams.append(trimmed_video_stream)
+
+        output_video_and_audio = ffmpeg.output(*output_streams, output_file.as_posix())
 
         output_video_and_audio.overwrite_output().run()
 
