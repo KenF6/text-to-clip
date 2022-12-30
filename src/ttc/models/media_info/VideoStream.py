@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Any
 
-from src.models.media_info.Disposition import Disposition
-from src.models.media_info.Tags import Tags
+from src.ttc.models.media_info.Disposition import Disposition
+from src.ttc.models.media_info.Tags import Tags
 
 
 @dataclass

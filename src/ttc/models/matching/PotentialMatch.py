@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from datetime import timedelta
 from typing import List
 
-from src.models.FfmpegTimestamp import FfmpegTimestamp
-from src.models.transcription.RecognizedWord import RecognizedWord
+from src.ttc.models.FfmpegTimestamp import FfmpegTimestamp
+from src.ttc.models.transcription.RecognizedWord import RecognizedWord
 
 
 @dataclass

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 from typing import List
 
-from src.models.transcription.RecognizedWord import RecognizedWord
+from src.ttc.models.transcription.RecognizedWord import RecognizedWord
 
 
 @dataclass

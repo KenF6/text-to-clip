@@ -1,9 +1,9 @@
 from difflib import SequenceMatcher
 from typing import List
 
-from src.TextHelper import TextHelper
-from src.models.matching.PotentialMatch import PotentialMatch
-from src.models.transcription.Transcript import Transcript
+from src.ttc.TextHelper import TextHelper
+from src.ttc.models.matching.PotentialMatch import PotentialMatch
+from src.ttc.models.transcription.Transcript import Transcript
 
 
 class SearchTermMatcher:

@@ -4,8 +4,8 @@ from typing import Any
 
 from vosk import Model, KaldiRecognizer
 
-from src.MediaHandler import MediaHandler
-from src.models.transcription.Transcript import Transcript
+from src.ttc.MediaHandler import MediaHandler
+from src.ttc.models.transcription.Transcript import Transcript
 
 
 class Transcriber:
