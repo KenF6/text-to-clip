@@ -1,6 +1,6 @@
 import pytest
 
-from src.models.transcription.RecognizedWord import RecognizedWord
+from src.ttc.models.transcription.RecognizedWord import RecognizedWord
 
 
 @pytest.mark.parametrize(

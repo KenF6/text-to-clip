@@ -1,11 +1,11 @@
-from typing import List, Tuple, Set
+from typing import List
 
 import pytest
 
-from src.SearchTermMatcher import SearchTermMatcher
-from src.models.matching.PotentialMatch import PotentialMatch
-from src.models.transcription.RecognizedWord import RecognizedWord
-from src.models.transcription.Transcript import Transcript
+from src.ttc.SearchTermMatcher import SearchTermMatcher
+from src.ttc.models.matching.PotentialMatch import PotentialMatch
+from src.ttc.models.transcription.RecognizedWord import RecognizedWord
+from src.ttc.models.transcription.Transcript import Transcript
 
 
 @pytest.mark.parametrize(

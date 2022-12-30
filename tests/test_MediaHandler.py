@@ -5,14 +5,14 @@ from pathlib import PurePosixPath
 import ffmpeg
 import pytest
 
-from src.MediaHandler import MediaHandler
-from src.models.FfmpegTimestamp import FfmpegTimestamp
-from src.models.media_info.AudioStream import AudioStream
-from src.models.media_info.Disposition import Disposition
-from src.models.media_info.Format import Format
-from src.models.media_info.MediaInfo import MediaInfo
-from src.models.media_info.Tags import Tags
-from src.models.media_info.VideoStream import VideoStream
+from src.ttc.MediaHandler import MediaHandler
+from src.ttc.models.FfmpegTimestamp import FfmpegTimestamp
+from src.ttc.models.media_info.AudioStream import AudioStream
+from src.ttc.models.media_info.Disposition import Disposition
+from src.ttc.models.media_info.Format import Format
+from src.ttc.models.media_info.MediaInfo import MediaInfo
+from src.ttc.models.media_info.Tags import Tags
+from src.ttc.models.media_info.VideoStream import VideoStream
 
 
 @pytest.mark.parametrize(

@@ -5,8 +5,8 @@ from typing import Union
 
 import ffmpeg
 
-from src.models.FfmpegTimestamp import FfmpegTimestamp
-from src.models.media_info.MediaInfo import MediaInfo
+from src.ttc.models.FfmpegTimestamp import FfmpegTimestamp
+from src.ttc.models.media_info.MediaInfo import MediaInfo
 
 
 class MediaHandler:

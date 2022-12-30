@@ -1,7 +1,7 @@
 import pytest
 
-from src.models.transcription.Transcript import Transcript
-from src.models.transcription.RecognizedWord import RecognizedWord
+from src.ttc.models.transcription.Transcript import Transcript
+from src.ttc.models.transcription.RecognizedWord import RecognizedWord
 
 
 @pytest.mark.parametrize(

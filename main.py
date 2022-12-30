@@ -2,9 +2,9 @@
 import click
 from pathlib import PurePosixPath
 
-from src.MediaHandler import MediaHandler
-from src.SearchTermMatcher import SearchTermMatcher
-from src.Transcriber import Transcriber
+from src.ttc.MediaHandler import MediaHandler
+from src.ttc.SearchTermMatcher import SearchTermMatcher
+from src.ttc.Transcriber import Transcriber
 
 
 @click.command()

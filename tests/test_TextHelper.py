@@ -1,6 +1,6 @@
 import pytest
 
-from src.TextHelper import TextHelper
+from src.ttc.TextHelper import TextHelper
 
 
 @pytest.mark.parametrize(

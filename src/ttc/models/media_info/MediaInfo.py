@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List, Any
 
-from src.models.media_info.AudioStream import AudioStream
-from src.models.media_info.Format import Format
-from src.models.media_info.VideoStream import VideoStream
+from src.ttc.models.media_info.AudioStream import AudioStream
+from src.ttc.models.media_info.Format import Format
+from src.ttc.models.media_info.VideoStream import VideoStream
 
 
 @dataclass

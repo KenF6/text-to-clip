@@ -2,7 +2,7 @@ from datetime import time
 
 import pytest
 
-from src.models.FfmpegTimestamp import FfmpegTimestamp
+from src.ttc.models.FfmpegTimestamp import FfmpegTimestamp
 
 
 @pytest.mark.parametrize(

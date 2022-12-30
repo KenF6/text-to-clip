@@ -3,9 +3,9 @@ from pathlib import PurePosixPath
 
 import pytest
 
-from src.Transcriber import Transcriber
-from src.models.transcription.Transcript import Transcript
-from src.models.transcription.RecognizedWord import RecognizedWord
+from src.ttc.Transcriber import Transcriber
+from src.ttc.models.transcription.Transcript import Transcript
+from src.ttc.models.transcription.RecognizedWord import RecognizedWord
 
 
 @pytest.mark.parametrize(
